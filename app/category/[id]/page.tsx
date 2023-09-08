@@ -9,11 +9,6 @@ import { Metadata } from "next";
 import Head from "next/head";
 import useFetch from "@/app/hooks/useFetch";
 
-export const metadata: Metadata = {
-  title: "Subcategories",
-  description:
-    "Your one stop destination to find all kinds of gifts on the internet",
-};
 const SubCategoryPage = () => {
   const { subcategories, setSubCategories } = useMyContext();
 
