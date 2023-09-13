@@ -38,9 +38,7 @@ const Header = () => {
     });
   };
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  
 
   return (
     <header
@@ -49,15 +47,14 @@ const Header = () => {
     >
       <div className="container mx-auto px-4 md:px-3 sm:px-1 lg:px-8 ">
         <div className="flex flex-wrap items-center lg:justify-around justify-between pb-2 pt-0 ">
-          <div className="flex items-center">
+          <div className="lg:flex hidden items-center">
             <SearchInput />
-
+            </div>
+            <div className="flex items-center">
             <MobileNavigation
-              isMobileMenuOpen={isMobileMenuOpen}
-              toggleMobileMenu={toggleMobileMenu}
               categories={categories}
             />
-          </div>
+            </div>
           <div className=" flex items-center justify-center ">
             <Link href="/">
               <div className="flex items-center justify-center md:justify-start ">

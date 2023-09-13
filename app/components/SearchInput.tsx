@@ -39,12 +39,12 @@ const SearchInput = () => {
 
   return (
     <form onSubmit={onSearch}>
-      <div className="mr-4 relative  lg:flex hidden items-center text-gray-400 focus-within:text-gray-600">
+      <div className="mr-4 relative items-center text-gray-400 focus-within:text-gray-600">
         <button
           onClick={onSearch}
           className="absolute w-6 h-6 ml-4 text-gray-400 hover:text-gray-600"
         >
-          <Search className="w-6 h-6" />
+          <Search className=" mt-2" />
         </button>
 
         <input
