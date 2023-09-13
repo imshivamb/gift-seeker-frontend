@@ -22,7 +22,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
   const [mobileNav, setMobileNav] = useState(false);
 
   const toggleMoreDropdown = (open: boolean) => {
-    setIsMoreDropdownOpen(open);
+    setIsMoreDropdownOpen(!isMoreDropdownOpen);
   };
 
   const toggleMobileNav = () => {
@@ -41,14 +41,14 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
   const renderSubCategories = (subCategoryData: SubCategory[]) => {
     return subCategoryData.map((subCategory: SubCategory) => (
       <Link
-        key={subCategory.id}
-        href={`/${subCategory.attributes.title
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`}
+      key={subCategory.id}
+      href="/category/[id]"
+      as={`/category/${subCategory.id}`}
+          className=" hover:text-gray-500 py-2 "
       >
-        <div className="block py-2 px-4 hover:bg-gray-100">
+        
           {subCategory.attributes.title}
-        </div>
+        
       </Link>
     ));
   };
@@ -67,18 +67,18 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
 
       
       
-      <nav className={mobileNav ? 'md:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
+      <nav className={mobileNav ? 'lg:hidden fixed left-0 top-0 w-full h-screen bg-black/70' : ''}>
         <div className={mobileNav ? 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500' :
           'fixed left-[-100%] top-0 p-10 ease-in duration-500'}>
           <div>
             <div className='flex w-full items-center justify-between'>
-              <Image src={logo} alt='logo' width={200} height={100} />
-              <div onClick={toggleMobileNav} className='rounded-full shadow-lg shadow-gray-400 p-4 cursor-pointer'>
+              <Image src={logo} alt='logo' width={150} height={75} />
+              <div onClick={toggleMobileNav} className='rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer'>
               <X className="w-8 h-8 " />
               </div>
             </div>
             <div className='border-b border-gray-300 my-4'>
-              <div className='w-[85%] md:w-[90%] py-4'><SearchInput /></div>
+              <div className='w-[65%] md:w-[75%] '><SearchInput /></div>
             </div>
           </div>
           <div className='py-4 flex flex-col'>
@@ -91,26 +91,28 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
                 key={category.id}
                 className="py-3 text-sm cursor-pointer"
                 onClick={() => toggleCategoryDropdown(index)}
-                onMouseLeave={() => toggleCategoryDropdown(index)}
+                
               >
                 <div className="flex  items-center justify-between font-poppins font-bold text-lg hover:text-gray-300 active:underline-offset-2">
                   {category.attributes.title}{" "}
                   <ChevronDown className="relative top-1 float-right w-6 h-6  " />
                 </div>
                 {categoryDropdownOpen[index] && (
-                  <ul className="bg-white absolute top-6 left-0 min-w-[200px] px-1 py-1 text-black shadow-lg">
-                    <li className="h-12 flex flex-col justify-between items-center px-3 hover:bg-black/[0.03] rounded-md">
+                  <div className="absolute  text-left text-md px-8 space-y-2  text-gray-900">
+                  <ul className= "leading-loose whitespace-nowrap font-poppins   font-bold">
+                    <li className="h-auto flex flex-col justify-between font-poppins bg-white  font-bold text-lg items-center px-3">
                       {renderSubCategories(
                         category.attributes.sub_categories.data
                       )}
                     </li>
                   </ul>
+                  </div>
                 )}
               </li>
             ))}
             <li
               onClick={() => toggleMoreDropdown(true)}
-              onMouseLeave={() => toggleMoreDropdown(false)}
+              
               className="relative group "
             >
               <div className=" my-0 md:ml-8 font-poppins font-bold text-lg py-3">
@@ -125,7 +127,7 @@ const MobileNavigation: React.FC<MobileNavigationProps> = ({
               {isMoreDropdownOpen && (
                 <div
                   onClick={() => toggleMoreDropdown(true)}
-                  onMouseLeave={() => toggleMoreDropdown(false)}
+                  
                   className="absolute  text-left text-md px-8 space-y-2 bg-white text-gray-900"
                 >
                   <ul className="leading-loose whitespace-nowrap font-poppins font-bold">

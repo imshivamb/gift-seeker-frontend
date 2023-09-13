@@ -50,7 +50,7 @@ const SearchInput = () => {
         <input
           type="text"
           placeholder="Search..."
-          className="py-2 pl-12 px-4 rounded-full border border-indigo-200 hover:outline focus:border-blue-500"
+          className="py-2 pl-12 px-1 md:px-4 rounded-full border border-indigo-200 hover:outline focus:border-blue-500"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
