@@ -21,6 +21,6 @@ export const fetchData = async (url: string) => {
 
 export const fetchCategories = () => fetchData("/categories?populate=*")
 export const fetchProducts = () => fetchData("/products?populate=*")
-export const fetchSubCategories = () => fetchData("/sub-categories?populate=products.image");
+export const fetchSubCategories = () => fetchData("/sub-categories?populate=image&populate=products.image");
 
 export const revalidate = 'force-cache'

@@ -18,9 +18,9 @@ const SearchPage = () => {
   return (
     <div>
       <div>
-        {/* {data?.map((product: Product[]) => (
+        {data?.map((product: Product[]) => (
           <ProductCard products={product} />
-        ))} */}
+        ))}
       </div>
     </div>
   );

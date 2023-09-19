@@ -17,7 +17,7 @@ const myLoader = ({ src }: { src: string }) => {
 };
 
 const ProductCard: React.FC<Props> = ({ products }) => {
-  const initialProductCount = 15;
+  const initialProductCount = 24;
   const [visibleProducts, setVisibleProducts] = useState(initialProductCount);
   const [loading, setLoading] = useState(false);
   const productArray = Object.values(products).reverse();
@@ -26,7 +26,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
     if (!loading && visibleProducts < productArray.length) {
       setLoading(true);
       setTimeout(() => {
-        const additionalProducts = 15;
+        const additionalProducts = 24;
         setVisibleProducts((prevCount) => prevCount + additionalProducts);
         setLoading(false);
       }, 1000);
@@ -52,7 +52,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
   }, []);
 
   return (
-    <div className="bg-white">
+    <div className="bg-[#eceae3]/30">
       <main className="mx-auto max-w-screen-lg bg-slate-50 px-6 py-20">
         <InfiniteScroll
           dataLength={visibleProducts}
@@ -65,7 +65,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
             {productArray.slice(0, visibleProducts).map((product) => (
               <div
                 key={product.id}
-                className="border-1 shadow-md rounded-lg bg-white overflow-hidden max-w-[350px]  mx-auto"
+                className="border-1 relative border-slate-500 shadow-md rounded-lg bg-white overflow-hidden max-w-[350px]  mx-auto"
               >
                 <Head>
                   <title>{product?.attributes?.title}</title>
@@ -98,22 +98,16 @@ const ProductCard: React.FC<Props> = ({ products }) => {
                   <h3 className="font-semibold text-xl pb-3 text-gray-500">
                     {product?.attributes?.title}
                   </h3>
-                  <p
-                    className={`text-sm text-gray-700${
-                      product?.attributes?.description?.length > 100
-                        ? "line-clamp-5 text-gray-700"
-                        : ""
-                    }`}
-                  >
+                  <p className={"text-sm text-gray-700 line-clamp-5"}>
                     {product?.attributes?.description}
                   </p>
                 </div>
-                <div className="p-4 flex justify-between items-end">
+                <div className="p-4 flex bottom-0 sticky justify-between items-end">
                   <p className="text-lg font-bold">
                     &#8377;{product?.attributes?.price}
                   </p>
                   <Link href={product?.attributes?.link} target="_blank">
-                    <button className="bg-blue-500 text-white px-4 py-2 rounded-lg">
+                    <button className="bg-blue-700 hover:scale-105 hover:text-gray-200 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg">
                       Shop Now
                     </button>
                   </Link>

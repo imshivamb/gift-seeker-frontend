@@ -1,11 +1,12 @@
 "use client";
 import { useEffect } from "react";
-import Image from "next/image";
+
 import { fetchSubCategories } from "../../utils/api";
 import ProductCard from "@/app/components/ProductCard";
 import { useParams } from "next/navigation";
 import { useMyContext } from "@/app/context";
-import { Metadata } from "next";
+import Image from "next/image";
+
 import Head from "next/head";
 import useFetch from "@/app/hooks/useFetch";
 
@@ -33,8 +34,8 @@ const SubCategoryPage = () => {
     return imageUrl;
   };
 
-  const { data } = useFetch(`/sub-categories?populate=*`);
-  console.log(data);
+  // const { data } = useFetch(`/sub-categories?populate=*`);
+  // console.log(data);
 
   const { id } = useParams();
 
@@ -64,13 +65,20 @@ const SubCategoryPage = () => {
         <title>{subcategory?.attributes?.title}</title>
       </Head>
       <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-poppins font-bold text-center">
+        <h1 className="text-4xl text-slate-700 font-poppins font-bold text-center underline underline-offset-4">
           Gifts for {subcategory.attributes.title}
         </h1>
-        {/* {data}
-        <div>
-          <Image src={subcategory.attributes} />
-        </div> */}
+
+        <div className="my-4 bg-[#ECEAF3]/50 w-full h-full flex items-center justify-center">
+          <Image
+            loader={myLoader}
+            src={subcategory?.attributes?.image?.data?.attributes?.url}
+            alt={subcategory?.attributes?.title}
+            width={600}
+            height={300}
+            className=""
+          />
+        </div>
         <div className="h-[200px] w-full  m-10 font-palanquin">
           <p>{subcategory.attributes.description}</p>
         </div>

@@ -19,8 +19,6 @@ import { fetchCategories } from "@/app/utils/api";
 import SearchInput from "./SearchInput";
 
 const Header = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   const { categories, setCategories } = useMyContext();
 
   const { user } = useClerk();
@@ -38,44 +36,42 @@ const Header = () => {
     });
   };
 
-  
-
   return (
     <header
-      className={`w-full h-[80px] lg:h-[140px] bg-white flex items-center 
+      className={`w-full h-[80px] lg:h-[110px] bg-white flex items-center 
       justify-between z-20 sticky top-0 transition-transform duration-300 border-b-2  border-blue-500 shadow-md`}
     >
-      <div className="container mx-auto px-4 md:px-3 sm:px-1 lg:px-8 ">
-        <div className="flex flex-wrap items-center lg:justify-around justify-between pb-2 pt-0 ">
+      <div className="container mx-auto px-4 md:px-3 sm:px-1 lg:px-5 ">
+        <div className="flex flex-wrap items-center lg:justify-around justify-between pb-2 pt-3 ">
           <div className="lg:flex hidden items-center">
             <SearchInput />
-            </div>
-            <div className="flex items-center">
-            <MobileNavigation
-              categories={categories}
-            />
-            </div>
-          <div className=" flex items-center justify-center ">
+          </div>
+          <div className="flex items-center">
+            <MobileNavigation categories={categories} />
+          </div>
+          <div className=" flex items-center justify-center pr-10">
             <Link href="/">
-              <div className="flex items-center justify-center md:justify-start ">
-                <div className="top-0">
-                  <Image src={logo} alt="logo" width={250} height={100} />
-                </div>
-              </div>
+              <Image
+                src={logo}
+                alt="logo"
+                width={250}
+                height={100}
+                className="lg:mr-[100px]"
+              />
             </Link>
           </div>
           {user ? (
             <UserButton afterSignOutUrl="/" />
           ) : (
-            <div className="lg:flex hidden items-center space-x-6">
+            <div className="lg:flex hidden items-center space-x-3 mx-5">
               {/* Replace with your user login/register links */}
-              <button className="rounded-xl px-4 py-2 bg-indigo-400 font-bold mr-0">
-                <a href="/signin" className="text-white hover:text-gray-700">
+              <button className="rounded-xl px-4 py-2 bg-indigo-600 font-bold mr-0 hover:scale-105">
+                <a href="/signin" className="text-white hover:text-gray-700 ">
                   Login
                 </a>
               </button>
-              <button className="bg-emerald-400 rounded-xl px-4 py-2 font-bold ml-0">
-                <a href="/signup" className="text-white hover:text-gray-700">
+              <button className="bg-emerald-600 rounded-xl px-4 py-2 font-bold ml-0 hover:scale-105">
+                <a href="/signup" className="text-white hover:text-gray-700 ">
                   Register
                 </a>
               </button>
