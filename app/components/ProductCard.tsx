@@ -79,20 +79,22 @@ const ProductCard: React.FC<Props> = ({ products }) => {
                   />
                 </Head>
                 <div className="object-cover">
-                  <Link
-                    href={product?.attributes?.link}
-                    target="_blank"
-                    className="object-cover"
-                  >
-                    <Image
-                      className="rounded-t-lg w-full h-72"
-                      loader={myLoader}
-                      src={product?.attributes?.image?.data?.attributes?.url}
-                      alt={product?.attributes?.title}
-                      width={330}
-                      height={275}
-                    />
-                  </Link>
+                  {product?.attributes?.link && (
+                    <Link
+                      href={product?.attributes?.link}
+                      target="_blank"
+                      className="object-cover"
+                    >
+                      <Image
+                        className="rounded-t-lg w-full h-72"
+                        loader={myLoader}
+                        src={product?.attributes?.image?.data?.attributes?.url}
+                        alt={product?.attributes?.title}
+                        width={330}
+                        height={275}
+                      />
+                    </Link>
+                  )}
                 </div>
                 <div className="p-3 text-left flex-grow">
                   <h3 className="font-semibold text-xl pb-3 text-gray-500">
@@ -106,11 +108,13 @@ const ProductCard: React.FC<Props> = ({ products }) => {
                   <p className="text-lg font-bold">
                     &#8377;{product?.attributes?.price}
                   </p>
-                  <Link href={product?.attributes?.link} target="_blank">
-                    <button className="bg-blue-700 hover:scale-105 hover:text-gray-200 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg">
-                      Shop Now
-                    </button>
-                  </Link>
+                  {product?.attributes?.link && (
+                    <Link href={product?.attributes?.link} target="_blank">
+                      <button className="bg-blue-700 hover:scale-105 hover:text-gray-200 hover:bg-indigo-500 text-white px-4 py-2 rounded-lg">
+                        Shop Now
+                      </button>
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}

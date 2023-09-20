@@ -2,9 +2,9 @@ import React from "react";
 import Link from "next/link";
 import { Category, SubCategory } from "@/app/context";
 
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 type Props = {
   categories: { [key: number]: Category };

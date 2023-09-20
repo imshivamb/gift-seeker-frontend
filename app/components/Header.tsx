@@ -6,9 +6,9 @@ import { Search } from "lucide-react";
 import { useMyContext } from "@/app/context";
 import logo from "../assets/logo.png";
 import Image from "next/image";
-import { useRouter, usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import MobileNavigation from "./MobileNavigation";
 import Navbar from "./Navbar";
 
