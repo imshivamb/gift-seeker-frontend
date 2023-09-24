@@ -86,7 +86,7 @@ const ProductCard: React.FC<Props> = ({ products }) => {
                       className=""
                     >
                       <Image
-                        className="rounded-t-lg w-full h-72 "
+                        className="rounded-t-lg w-full h-72 object-contain"
                         // loader={myLoader}
                         src={product?.attributes?.image?.data?.attributes?.url}
                         alt={product?.attributes?.title}
