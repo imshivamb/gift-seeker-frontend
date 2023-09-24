@@ -66,7 +66,7 @@ const SubCategoryPage = () => {
       </Head>
       <div className="flex flex-col items-center">
         <h1 className="text-4xl text-slate-700 font-poppins font-bold text-center underline underline-offset-4">
-          Gifts for {subcategory.attributes.title}
+          Gifts for {subcategory.attributes?.title}
         </h1>
 
         <div className="my-4 bg-[#ECEAF3]/50 w-full h-full flex items-center justify-center">
@@ -80,14 +80,14 @@ const SubCategoryPage = () => {
           />
         </div>
         <div className="h-[200px] w-full  m-10 font-palanquin">
-          <p>{subcategory.attributes.description}</p>
+          <p>{subcategory.attributes?.description}</p>
         </div>
       </div>
       <div>
         <ProductCard
-          products={subcategory.attributes.products.data.map((product) => ({
+          products={subcategory.attributes?.products?.data.map((product) => ({
             ...product,
-            imageUrl: product.attributes.image.data.attributes.url,
+            imageUrl: product.attributes?.image?.data?.attributes?.url,
           }))}
         />
       </div>
