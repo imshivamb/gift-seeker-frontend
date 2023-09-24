@@ -12,9 +12,9 @@ type Props = {
   products: Product[];
 };
 
-const myLoader = ({ src }: { src: string }) => {
-  return `http://localhost:1337${src}`;
-};
+// const myLoader = ({ src }: { src: string }) => {
+//   return `http://localhost:1337${src}`;
+// };
 
 const ProductCard: React.FC<Props> = ({ products }) => {
   const initialProductCount = 24;
@@ -83,11 +83,11 @@ const ProductCard: React.FC<Props> = ({ products }) => {
                     <Link
                       href={product?.attributes?.link}
                       target="_blank"
-                      className="object-cover"
+                      className=""
                     >
                       <Image
-                        className="rounded-t-lg w-full h-72"
-                        loader={myLoader}
+                        className="rounded-t-lg w-full h-72 "
+                        // loader={myLoader}
                         src={product?.attributes?.image?.data?.attributes?.url}
                         alt={product?.attributes?.title}
                         width={330}

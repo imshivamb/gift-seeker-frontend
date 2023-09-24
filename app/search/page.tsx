@@ -13,8 +13,9 @@ const SearchPage = () => {
   const { data } = useFetch<Product>(
     `/products?populate=*&filters[title][$containsi]=${encodedSearchQuery}`
   );
+
+  console.log("Search", data);
   const searchArray = Object.values(data);
-  console.log("Search", searchArray);
 
   if (searchArray === undefined) {
     return <p>Loading...</p>;

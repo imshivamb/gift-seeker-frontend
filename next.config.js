@@ -2,7 +2,7 @@
 const nextConfig = {
   // output: "export",
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'giftseekerbucket.s3.eu-north-1.amazonaws.com'],
   },
 }
 
